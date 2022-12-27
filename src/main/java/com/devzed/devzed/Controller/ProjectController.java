@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +33,8 @@ public class ProjectController {
         List<Project> list = projectService.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
-
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody dtoProject dtoPro) {
         if (StringUtils.isBlank(dtoPro.getTitle())) {
@@ -57,6 +59,7 @@ public class ProjectController {
         return new ResponseEntity(project, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoProject dtoPro) {
         // Valida si existe id
@@ -87,6 +90,7 @@ public class ProjectController {
 
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         // Valida si existe id
