@@ -1,4 +1,4 @@
-FROM amazoncorretto:8-alpine-jdk
+FROM openjdk:8-jdk-alpine
 
 #MAINTAINER emaaristimuno
 
