@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:8
 
 #MAINTAINER emaaristimuno
 ARG JAR_FILE=target/devzed-0.0.1-SNAPSHOT.jar
