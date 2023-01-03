@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/contact")
-@CrossOrigin(origins = "https://devzedportfolio.web.app")
+@CrossOrigin(origins = "*")
 public class ContactController {
 
     @Autowired ContactService contactService;
